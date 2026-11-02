@@ -1,10 +1,14 @@
-import { useState } from 'react'
+//displays vendor's menu items with sorting and add to cart button
+import { useLocalStorage } from '../hooks/useLocalStorage.js'
 import MenuItemCard from './MenuItemCard.jsx'
+import { useCart } from '../hooks/useCart.js'
 
-function MenuList({ items, onAdd }) {
-  const [sortBy, setSortBy] = useState('default')
-
-  // Copy the array so sorting does not change the original menu.
+function MenuList({ items }) {
+  const { addToCart } = useCart()
+  const [sortBy, setSortBy] = useLocalStorage(
+  'campuseats-sort',
+  'default'
+)
   const sortedItems = [...items]
 
   if (sortBy === 'price-low') {
@@ -44,7 +48,7 @@ function MenuList({ items, onAdd }) {
           <MenuItemCard
             key={item.id}
             item={item}
-            onAdd={onAdd}
+            onAdd={addToCart}
           />
         ))}
       </div>

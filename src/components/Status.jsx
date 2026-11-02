@@ -1,4 +1,4 @@
-// Small components for the loading and error states of fetched data.
+//loading and error messages for menu list
 export function Loading() {
   return <p className="muted" role="status">Loading menus…</p>
 }

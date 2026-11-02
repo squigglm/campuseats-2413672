@@ -1,3 +1,4 @@
+//collects checkout details, check errors, pass valid details to CartPage through onPlaceOrder prop
 import { useState } from 'react'
 
 const MAHALLAHS = [
@@ -5,7 +6,6 @@ const MAHALLAHS = [
   'Bilal', 'Hafsa', 'Uthman', 'Zubair',
 ]
 
-// Check the form values and return any errors.
 function validate(values) {
   const errors = {}
 
@@ -38,6 +38,7 @@ function CheckoutForm({ onPlaceOrder }) {
 
   const [errors, setErrors] = useState({})
 
+  //update form values when user types or selects
   function handleChange(event) {
     const { name, value } = event.target
 
@@ -53,7 +54,6 @@ function CheckoutForm({ onPlaceOrder }) {
     const found = validate(values)
     setErrors(found)
 
-    // No errors means the form is valid.
     if (Object.keys(found).length === 0) {
       onPlaceOrder(values)
     }
