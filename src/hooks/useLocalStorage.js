@@ -1,3 +1,4 @@
+//hook that remembers a value in React and saves in local storage at browser
 import { useEffect, useState } from 'react'
 
 export function useLocalStorage(key, initialValue) {
