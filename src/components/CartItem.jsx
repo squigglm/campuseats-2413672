@@ -1,4 +1,4 @@
-// Displays one cart line; App manages its state.
+//displays one item in cart, its quantity, cost and buttons to change or remove
 function CartItem({ line, onChangeQty, onRemove }) {
   const { item, qty } = line
 
@@ -19,7 +19,7 @@ function CartItem({ line, onChangeQty, onRemove }) {
           −
         </button>
 
-        <span>{qty}</span>
+        <span>{qty}</span> {/* display current quantity */}
 
         <button
           type="button"

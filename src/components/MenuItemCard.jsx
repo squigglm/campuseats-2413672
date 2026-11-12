@@ -1,3 +1,4 @@
+//displays one menu item with add to cart button
 function MenuItemCard({ item, onAdd }) {
   return (
     <article className="card menu-card">
