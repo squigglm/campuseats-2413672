@@ -26,3 +26,9 @@ Add a new section every week, before you tag. Did not use AI? Write "None" under
 - What I asked for: More explanation on the code, especially about the hooks, cart context and routes
 - What I kept, changed or rejected, and why: -
 - One thing the AI got wrong and how I fixed it: -
+
+## Week 5
+- Tool(s): ChatGPT
+- What I asked for: Help with login, resgistration, saving user's sorting preference choices and debugging 
+- What I kept, changed or rejected, and why: I kept most of the code but asked for change because the AI doesn't let users sort if not logged in 
+- One thing the AI got wrong and how I fixed it: It disabled sorting for guests. I remove the restriction so everyone could use it. But if logged in, the user's sort preferences will be saved
