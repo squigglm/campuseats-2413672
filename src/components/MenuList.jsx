@@ -1,13 +1,15 @@
 //displays vendor's menu items with sorting and add to cart button
 import { useLocalStorage } from '../hooks/useLocalStorage.js'
-import MenuItemCard from './MenuItemCard.jsx'
 import { useCart } from '../hooks/useCart.js'
+import { useAuth } from '../hooks/useAuth.js'
+import MenuItemCard from './MenuItemCard.jsx'
 
-function MenuList({ items }) {
+function MenuListContent({ items, user }) {
   const { addToCart } = useCart()
   const [sortBy, setSortBy] = useLocalStorage(
-  'campuseats-sort',
-  'default'
+  user ? 'ce-sort-' + user.uid : 'ce-sort-guest',
+    'default',
+    Boolean(user)
 )
   const sortedItems = [...items]
 
@@ -41,6 +43,12 @@ function MenuList({ items }) {
           <option value="price-high">Price: high to low</option>
           <option value="popular">Popular first</option>
         </select>
+
+        {!user && (
+          <p className="muted">
+            Log in to save your sorting preference.
+          </p>
+        )}
       </div>
 
       <div className="grid">
@@ -55,5 +63,22 @@ function MenuList({ items }) {
     </>
   )
 }
+
+  function MenuList({ items }) {
+  const { user, loading } = useAuth()
+
+  if (loading) {
+    return <p className="muted">Loading preference…</p>
+  }
+
+  return (
+    <MenuListContent
+      key={user?.uid ?? 'guest'}
+      items={items}
+      user={user}
+    />
+  )
+  }
+
 
 export default MenuList

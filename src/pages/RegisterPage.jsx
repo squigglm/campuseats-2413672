@@ -46,7 +46,16 @@ function RegisterPage() {
 
         <label htmlFor="email">Email</label>
         <input id="email" type="email" value={email}
-          onChange={(e) => setPassword(e.target.value)} required />
+          onChange={(e) => setEmail(e.target.value)} required />
+
+        <label htmlFor="password">Password</label>
+        <input
+          id="password"
+          type="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          minLength={6}
+          required />
 
         {error && <p className="field-error" role="alert">{error}</p>}
 
